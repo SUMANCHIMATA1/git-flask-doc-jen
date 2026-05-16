@@ -16,7 +16,7 @@ pipeline{
             steps{
                 script{
                   echo "========executing settingup environment========"
-                  bat 'docker build -t flask-jenkins-image:latest .'
+                  bat 'docker build -t docker-jenkins-flask-image:latest .'
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline{
                 script{
                     bat 'docker stop flask-container || exit 0'
                     bat 'docker rm flask-container || exit 0'
-                    bat 'docker run -d -p 5000:5000 --name flask-container flask-jenkins-image:latest'
+                    bat 'docker run -d -p 9001:5000 --name flask-container docker-jenkins-flask-image:latest'
                 }
             }
         }
